@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up &bull; Clubhouse</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 0.875rem;
+            color: #475569;
+            margin-bottom: 1.5rem;
+        }
+
+        .errors-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.25rem;
+            list-style-position: inside;
+        }
+
+        .error-item {
+            color: #991b1b;
+            font-size: 0.875rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.15rem;
+        }
+
+        .label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .input {
+            width: 100%;
+            padding: 0.65rem 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.9375rem;
+            font-family: inherit;
+            color: #0f172a;
+            outline: none;
+            transition: border-color 0.15s ease;
+        }
+
+        .input:focus {
+            border-color: #0f172a;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            background: #0f172a;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s ease;
+            margin-top: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            background: #1e293b;
+        }
+
+        .footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .footer-text {
+            color: #475569;
+        }
+
+        .link {
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .link-secondary {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .link-secondary:hover {
+            color: #0f172a;
+        }
+
+        @media (max-width: 420px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1 class="title">Sign Up</h1>
+        <p class="subtitle">Create an account to join the Clubhouse</p>
+
+        <% if (errors && errors.length > 0) { %>
+            <ul class="errors-box">
+                <% errors.forEach(error => { %>
+                    <li class="error-item"><%= error.msg %></li>
+                <% }) %>
+            </ul>
+        <% } %>
+
+        <form action="/sign-up" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="label" for="first_name">First Name</label>
+                    <input
+                        class="input"
+                        type="text"
+                        id="first_name"
+                        name="first_name"
+                        placeholder="First name"
+                        required
+                        autofocus
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label" for="last_name">Last Name</label>
+                    <input
+                        class="input"
+                        type="text"
+                        id="last_name"
+                        name="last_name"
+                        placeholder="Last name"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="username">Username / Email</label>
+                <input
+                    class="input"
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter email address"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="password">Password</label>
+                <input
+                    class="input"
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Minimum 5 characters"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="confirmPassword">Confirm Password</label>
+                <input
+                    class="input"
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Re-enter password"
+                    required
+                >
+            </div>
+
+            <button class="btn-submit" type="submit">Sign Up</button>
+        </form>
+
+        <div class="footer">
+            <p class="footer-text">
+                Already have an account? 
+                <a class="link" href="/log-in">Log In</a>
+            </p>
+            <a class="link link-secondary" href="/">Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>
