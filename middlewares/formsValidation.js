@@ -56,8 +56,22 @@ const validClubPasscode = [
                         return true;
                 })
 ];
+const validateAdminPasscode = [
+        body('passcode')
+        .trim()
+        .custom((value)=>{
+                const correctPasscode = process.env.ADMIN_PASSCODE;
+                if(value !== correctPasscode){
+                        throw new Error('incorrect admin password');
+                }
+                else{
+                        return true;
+                }
+        })
+];
 
 module.exports = {
         validSignup,
-        validClubPasscode
+        validClubPasscode,
+        validateAdminPasscode
 };

@@ -19,6 +19,7 @@ function isAdmin(req, res, next) {
   res.status(403).send("Forbidden: Admins only.");
 }
 
+
 module.exports = {
   isGuest,
   isAuth,

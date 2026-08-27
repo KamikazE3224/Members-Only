@@ -11,6 +11,7 @@ const signupRouter = require('./routes/sign-up');
 const loginRouter = require('./routes/log-in');
 const logoutRouter = require('./routes/log-out');
 const joinClubRouter = require('./routes/joinClubRouter');
+
 const pgPool = require('./db/pool');
 
 app.set("views", path.join(__dirname, "views"));
@@ -64,7 +65,6 @@ app.use('/sign-up', signupRouter);
 app.use('/log-in',loginRouter);
 app.use('/log-out',logoutRouter);
 app.use('/join-club',joinClubRouter);
-
 
 app.listen(3000);
 //THIS ORDER SHOULD NOT CHANGE

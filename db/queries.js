@@ -48,13 +48,32 @@ async function addMessage(title, user_id, message) {
     );
 
 }
+async function updateMemberStatus(id, column) {
 
+    const allowedColumns = ['is_member', 'admin'];
+
+    if (!allowedColumns.includes(column)) {
+        throw new Error('Invalid column name');
+    }
+
+    await pgPool.query(
+        `UPDATE clubhouse_members
+         SET ${column} = true
+         WHERE id = $1`,
+        [id]
+    );
+}
+async function deleteMessage(id){
+        await pgPool.query('DELETE FROM messages WHERE id=$1',[id]);
+}
 
 module.exports = {
     getUserByUsername,
     createUser,
     makeMember,
     getAllMessages,
-    addMessage
+    addMessage,
+    updateMemberStatus,
+    deleteMessage
     
 };
