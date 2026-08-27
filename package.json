@@ -10,5 +10,24 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "pg": "^8.23.0"
-  }
+  },
+  "name": "clubhouse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+  "start": "node --watch app.js"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KamikazE3224/Members-Only.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KamikazE3224/Members-Only/issues"
+  },
+  "homepage": "https://github.com/KamikazE3224/Members-Only#readme"
 }
